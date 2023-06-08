@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
 
 const ContactForm = ({ onSubmit }) => {
+  const value = useSelector(state => state);
+  console.log(value)
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -15,6 +20,7 @@ const ContactForm = ({ onSubmit }) => {
     event.preventDefault();
     onSubmit({ name, number });
     reset();
+dispatch({type: 'contacts/addContact', payload: {name, number, id: nanoid(3)}});
   };
   const reset = () => {
     setName('');
