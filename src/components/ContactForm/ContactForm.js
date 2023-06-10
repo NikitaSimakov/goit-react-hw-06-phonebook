@@ -1,11 +1,10 @@
-import  { useState } from 'react';
 import PropTypes from 'prop-types';
-import css from './ContactForm.module.css';
+import  { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
+import css from './ContactForm.module.css';
 
 const ContactForm = ({ onSubmit }) => {
-  // const value = useSelector(state => state);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
