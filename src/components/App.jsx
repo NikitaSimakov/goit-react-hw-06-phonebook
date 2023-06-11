@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
-import { Notify } from 'notiflix';
+// import React, { useState } from 'react';
+// import { nanoid } from 'nanoid';
+// import { Notify } from 'notiflix';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 // import { useSelector } from "react-redux";
 
 const App = () => {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem('contacts')) ?? []
-  );
+  // const [contacts, setContacts] = useState(
+  //   () => JSON.parse(localStorage.getItem('contacts')) ?? []
+  // );
   // const [filter, setFilter] = useState('');
   // const [filter, setFilter] = useReducer(reducer, '');
   // console.log(filter);
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const formSubmitHandler = data => {
-    setContacts(prevState => {
-      if (contacts?.some(contact => contact.name === data.name)) {
-        Notify.failure(`${data.name}, is already in contact`);
-        return contacts;
-      }
-      return [
-        ...prevState,
-        { name: data.name, number: data.number, id: nanoid(3) },
-      ];
-    });
-  };
+  // const formSubmitHandler = data => {
+  //   setContacts(prevState => {
+  //     if (contacts?.some(contact => contact.name === data.name)) {
+  //       Notify.failure(`${data.name}, is already in contact`);
+  //       return contacts;
+  //     }
+  //     return [
+  //       ...prevState,
+  //       { name: data.name, number: data.number, id: nanoid(3) },
+  //     ];
+  //   });
+  // };
 
   // const filterChangeHandler = (event) => {
   //   const {value} = event.currentTarget;
@@ -49,7 +49,7 @@ const App = () => {
       }}
     >
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={formSubmitHandler} />
+      <ContactForm />
       <h2>Contacts</h2>
       <Filter />
       <ContactList
