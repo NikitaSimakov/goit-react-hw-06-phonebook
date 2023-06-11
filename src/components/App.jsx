@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix';
 import ContactForm from './ContactForm/ContactForm';
@@ -10,7 +10,7 @@ const App = () => {
   const [contacts, setContacts] = useState(
     () => JSON.parse(localStorage.getItem('contacts')) ?? []
   );
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
   // const [filter, setFilter] = useReducer(reducer, '');
   // console.log(filter);
   useEffect(() => {
@@ -35,10 +35,10 @@ const App = () => {
   //   setFilter({ type: "filter", payload: value})
   // }
 
-  const deleteContactHandler = event => {
-    const { id } = event.currentTarget;
-    setContacts(contacts.filter(contact => contact.id !== id));
-  };
+  // const deleteContactHandler = event => {
+  //   const { id } = event.currentTarget;
+  //   setContacts(contacts.filter(contact => contact.id !== id));
+  // };
   return (
     <div
       style={{
@@ -53,9 +53,9 @@ const App = () => {
       <h2>Contacts</h2>
       <Filter />
       <ContactList
-        filter={filter}
-        contacts={contacts}
-        deleteContactHandler={deleteContactHandler}
+      // filter={filter}
+      // contacts={contacts}
+      // deleteContactHandler={deleteContactHandler}
       />
     </div>
   );

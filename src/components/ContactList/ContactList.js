@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/store';
 
 // const ContactList = ({ deleteContactHandler, contacts, filter }) => {
 const ContactList = () => {
@@ -11,24 +12,25 @@ const ContactList = () => {
   //       )
   //     : [];
   // };
-  const { contacts, filter } = useSelector(state => state);
-  const contactListRender = () => {
-    return contacts
-      ? contacts.filter(contact =>
-          contact.name.toLowerCase().includes(filter.toLowerCase())
-        )
-      : [];
-  };
   const dispatch = useDispatch();
-  const deleteContactHandler = (event) => {
-    console.dir(event.currentTarget.id)
-    const {id} = event.currentTarget
-    dispatch({type: 'contacts/deleteContacts', payload: {id}})
-  }
+  const { contacts, filter } = useSelector(state => state);
+
+  const filteredContactList = () => {
+    return filter
+      ? contacts.filter(contact =>
+          contact.name.toLowerCase().includes(filter.filter.toLowerCase())
+        )
+      : contacts;
+  };
+
+  const deleteContactHandler = event => {
+    const { id } = event.currentTarget;
+    dispatch(deleteContact({ id }));
+  };
   return (
     <ul>
-      {contactListRender() &&
-        contactListRender().map(contact => (
+      {filteredContactList() &&
+        filteredContactList().map(contact => (
           <li className={css.contactList_item} key={contact.id}>
             {contact.name}: {contact.number}
             <button
@@ -63,10 +65,10 @@ const ContactList = () => {
   // );
 };
 
-ContactList.propTypes = {
-  contacts: PropTypes.array,
-  deleteContactHandler: PropTypes.func.isRequired,
-  filter: PropTypes.string,
-};
+// ContactList.propTypes = {
+//   contacts: PropTypes.array,
+//   deleteContactHandler: PropTypes.func.isRequired,
+//   filter: PropTypes.string,
+// };
 
 export default ContactList;
