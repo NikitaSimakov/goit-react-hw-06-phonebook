@@ -12,21 +12,14 @@ const ContactForm = () => {
 
   const handleInputChange = event => {
     const { name, value } = event.currentTarget;
-    // console.log(name, value);
     if (name === 'name') setName(value);
     if (name === 'number') setNumber(value);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(name, number);
-    // onSubmit({ name, number });
     dispatch(addContact({ name, number, id: nanoid(3) }));
     reset();
-    // dispatch({
-    //   type: 'contacts/addContact',
-    //   payload: { name, number, id: nanoid(3) },
-    // });
   };
 
   const reset = () => {
