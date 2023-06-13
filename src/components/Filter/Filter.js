@@ -6,7 +6,6 @@ import { useState } from 'react';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  // const { filter } = useSelector(state => state.filter);
   const [filter, setFilter] = useState('');
 
   const filterInputChange = event => {
