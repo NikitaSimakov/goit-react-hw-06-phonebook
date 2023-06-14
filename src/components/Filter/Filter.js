@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { setFilterState } from 'redux/filterSlice';
