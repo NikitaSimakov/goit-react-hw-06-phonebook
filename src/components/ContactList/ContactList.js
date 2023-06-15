@@ -18,6 +18,7 @@ const ContactList = () => {
     const { id } = event.currentTarget;
     dispatch(deleteContact({ id }));
   };
+
   return (
     <ul>
       {filteredContactList() &&
