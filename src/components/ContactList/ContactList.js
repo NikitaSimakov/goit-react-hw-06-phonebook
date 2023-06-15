@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contactSlice';
