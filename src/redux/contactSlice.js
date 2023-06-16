@@ -6,11 +6,11 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsState,
   reducers: {
-    addContact(state, action) {
-      if (state.some(contact => contact.name === action.payload.name)) {
-        Notify.failure(`${action.payload.name}, is already in contact`);
+    addContact(state, { payload }) {
+      if (state.some(contact => contact.name === payload.name)) {
+        Notify.failure(`${payload.name}, is already in contact`);
       } else {
-        state.push(action.payload);
+        state.push(payload);
       }
     },
     deleteContact(state, action) {
